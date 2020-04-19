@@ -1,2 +1,3 @@
+aiohttp
 ﻿sanic
 sanic-jsonrpc
