@@ -16,7 +16,6 @@ async def main():
             await sleep(5)
             await ws.send_json(cancel_request)
             print(await ws.receive_json())
-            print(await ws.receive_json())
 
 if __name__ == '__main__':
     get_event_loop().run_until_complete(main())
