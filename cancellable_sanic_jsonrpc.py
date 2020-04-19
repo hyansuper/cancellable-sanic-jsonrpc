@@ -15,7 +15,7 @@ class CancellableSanicJsonrpc(SanicJsonrpc):
     ):
         SanicJsonrpc.__init__(self, app, post_route, ws_route, access_log=access_log)
         
-        @self.__call__
+        @self
         def _cancel_(task_name):
             for task in asyncio.all_tasks():
                 if task.get_name() == str(task_name):
