@@ -14,4 +14,8 @@ async def print_task(count:int)->str:
         print('still printing...', count)
     return 'done'
 
-app.run(host='127.0.0.1', port=8000)
+@jsonrpc.cancellable
+async def test():
+    return 'test ret'
+
+app.run(host='127.0.0.1', port=8000, auto_reload=True)

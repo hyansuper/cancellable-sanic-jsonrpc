@@ -1,4 +1,4 @@
-from asyncio import get_event_loop, sleep
+import asyncio
 from aiohttp import ClientSession
 import random, sys
 
@@ -15,13 +15,13 @@ async def main():
     async with ClientSession() as session:
         async with session.ws_connect(url) as ws:
             await ws.send_json(print_request)
-            await sleep(5)
+            await asyncio.sleep(5)
             await ws.send_json(cancel_request)
 
             # expected behavior: client should receive 2 json responses:
             # one for the cancel_request and one for print_request with CancelledError
             # but infact only one is returned
-            print(await ws.receive_json()) 
+            print(await ws.receive_json())
             print(await ws.receive_json())
 
 asyncio.run(main())
